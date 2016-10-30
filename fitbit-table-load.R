@@ -11,3 +11,6 @@ fitbit-table-load <- function() {
   }
   
 }
+
+mydata2 <- read.xlsx("/home/logan/Documents/code/datasciencecoursera/quiz-data/quiz1-3.xlsx")
+download.file(URL2, destfile = "/home/logan/Documents/code/datasciencecoursera/quiz-data/quiz1-3.xlsx")
