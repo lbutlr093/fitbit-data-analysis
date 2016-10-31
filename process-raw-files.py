@@ -36,3 +36,13 @@ for file in inputFiles: # loop through each of the raw files
 #		print row
 #	print row
 #inputFile.close()
+
+
+
+## add in tomorrow
+#bodyList = []
+#Bodyobj = ['Body']
+#Activitiesobj = ['Activities']
+#BodyStarting = outputList.index(Bodyobj)
+#BodyEnding = outputList.index(Activities)
+#bodyList = outputList[BodyStarting+1:BodyEnding-1]
