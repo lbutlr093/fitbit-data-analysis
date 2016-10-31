@@ -16,14 +16,13 @@ inputFiles = fnmatch.filter(os.listdir(rawFilesDir), '*.csv')
 #sleepOutput = 
 testOutput = []
 outputList = []
+test = 0
 
 ## open each .csv file and split
 for file in inputFiles: # loop through each of the raw files
     with open(rawFilesDir+file, 'rb') as f:
         reader = csv.reader(f)
         outputList = list(reader)
-        #for row in reader:
-            #testOutput += row
     with open(processedFilesDir+'processed_'+file, 'wb') as f2:
         writer = csv.writer(f2)
         writer.writerows(outputList)
@@ -36,3 +35,15 @@ for file in inputFiles: # loop through each of the raw files
 #		print row
 #	print row
 #inputFile.close()
+
+
+
+
+## add in tomorrow
+#bodyList = []
+#Bodyobj = ['Body']
+#Activitiesobj = ['Activities']
+#BodyStarting = outputList.index(Bodyobj)
+#BodyEnding = outputList.index(Activities)
+#bodyList = outputList[BodyStarting+1:BodyEnding-1]
+
