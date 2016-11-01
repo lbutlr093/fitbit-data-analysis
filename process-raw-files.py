@@ -14,13 +14,20 @@ for file in inputFiles: # loop through each of the raw files
         outputList = list(reader)
     ## set up the indexes for each section in the raw .csv file
     bodyList = outputList[outputList.index(['Body'])+1:outputList.index(['Activities'])-1]
-	# TODO: if sleep / food exist, conditionally set the following lists.
-	# TODO: foodsList = 
-    activitiesList = outputList[outputList.index(['Activities'])+1:len(outputList)-1]
-    # TODO: sleepList = 
+    try:
+        activitiesList = outputList[outputList.index(['Activities'])+1:outputList.index(['Sleep'])-1]
+        sleepList = outputList[outputList.index(['Sleep'])+1:len(outputList)-1]
+    except ValueError:
+		activitiesList = outputList[outputList.index(['Activities'])+1:len(outputList)-1]
+		sleepList = []
+    # TODO: foodsList = 
     with open(processedFilesDir+'body_'+file, 'wb') as bodyWriter:
         writer = csv.writer(bodyWriter)
-        writer.writerows(bodyList) # changed from outputList
+        writer.writerows(bodyList)
     with open(processedFilesDir+'activities_'+file, 'wb') as activitiesWriter:
         writer2 = csv.writer(activitiesWriter)
-        writer2.writerows(activitiesList) # change this to ActivitiesList
+        writer2.writerows(activitiesList)
+    if len(sleepList) != 0:
+        with open(processedFilesDir+'sleep_'+file, 'wb') as sleepWriter:
+            writer3 = csv.writer(sleepWriter)
+            writer3.writerows(sleepList)
