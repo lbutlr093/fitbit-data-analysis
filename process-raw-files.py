@@ -13,17 +13,21 @@ for file in inputFiles:
         reader = csv.reader(f)
         outputList = list(reader)
     # TODO: re-work the indexing (below) slightly
-    ## Set up indexes for when each section starts and ends. If next section does not exist, ValueError
-    ## is thrown and that is the last section of the file.
-    bodyList = outputList[outputList.index(['Body'])+1:outputList.index(['Activities'])-1]
+    ## Set up indexes for start/end of each section. If next section does
+    ## not exist, ValueError is thrown, it is the last section of the file.
+    bodyList = outputList[outputList.index(['Body'])+1:
+    		outputList.index(['Activities'])-1]
     try:
-        activitiesList = outputList[outputList.index(['Activities'])+1:outputList.index(['Sleep'])-1]
-        sleepList = outputList[outputList.index(['Sleep'])+1:len(outputList)-1]
+        activitiesList = outputList[outputList.index(['Activities'])+1:
+                outputList.index(['Sleep'])-1]
+        sleepList = outputList[outputList.index(['Sleep'])+1:
+                len(outputList)-1]
     except ValueError:
-        activitiesList = outputList[outputList.index(['Activities'])+1:len(outputList)-1]
+        activitiesList = outputList[outputList.index(['Activities'])+1:
+                len(outputList)-1]
         sleepList = []
-    ## Write each section to their own .csv file. Each section will be its own table with date as the
-    ## key to link tables.
+    ## Write each section to their own .csv file. Each section will be its
+    ## own table with date as the key to link tables.
     with open(processedFilesDir+'body_'+file, 'wb') as bodyWriter:
         writer = csv.writer(bodyWriter)
         writer.writerows(bodyList)
