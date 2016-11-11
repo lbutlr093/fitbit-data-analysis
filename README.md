@@ -6,4 +6,4 @@ Project to analyze data collected from my fitbit devices over the last few years
 2. Run the python script "process-raw-files.py" to split the .csv into output csv files for each section
 3. Load processed data files into their own mysql tables.
 
-TBD - Data analysis with R/SQL
+TBD - Data analysis with R/SQL.
