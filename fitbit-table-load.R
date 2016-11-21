@@ -28,8 +28,8 @@ fitbit-table-load <- function() {
   #food_data_frame
   
   ## Write each type out to file
-  write.csv(activities_data_frame, file = "all_fitbit_activities.csv")
-  write.csv(body_data_frame, file = "all_fitbit_body.csv")
+  write.csv(activities_data_frame, file = "all_fitbit_activities.csv", row.names = FALSE)
+  write.csv(body_data_frame, file = "all_fitbit_body.csv", row.names = FALSE)
   #sleep_data_frame
   #food_data_frame
 }
