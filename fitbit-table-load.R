@@ -1,4 +1,5 @@
 fitbit-table-load <- function() {
+  ## TODO: Add column for day of the week
   
   ## TODO: hard-coded for now, will play with passing parameters later
   setwd("/home/logan/Documents/code/fitbit-data-analysis/fitbit-data-processed")
@@ -33,7 +34,3 @@ fitbit-table-load <- function() {
   #sleep_data_frame
   #food_data_frame
 }
-
-## order by date
-# activitiesVector <- arrange(activitiesVector, date)
-# bodyVector <- arrange(bodyVector, date)
