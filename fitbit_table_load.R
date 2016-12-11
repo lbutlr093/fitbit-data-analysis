@@ -1,4 +1,4 @@
-fitbit-table-load <- function() {
+fitbit_table_load <- function() {
   ## TODO: Add column for day of the week
   
   ## TODO: hard-coded for now, will play with passing parameters later
