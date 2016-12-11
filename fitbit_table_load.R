@@ -1,15 +1,13 @@
 fitbit_table_load <- function() {
-  ## TODO: Add column for day of the week
-  
   ## TODO: hard-coded for now, will play with passing parameters later
-  setwd("/home/logan/Documents/code/fitbit-data-analysis/fitbit-data-processed")
+  setwd("/home/logan/Documents/code/fitbit-data-analysis/fitbit_data_processed")
   
   ## Collect all .csv files in directory, and set up dataframes for each type of file
   filesVector <- list.files(pattern="*.csv")
   activities_data_frame <- data.frame()
   body_data_frame <- data.frame()
-  #sleep_data_frame
-  #food_data_frame
+  #sleep_data_frame <- 
+  #food_data_frame <-
   
   ## Read each file in the processed files directory (contained in filesVector)
   for (index in seq_along(filesVector)) { 
@@ -28,9 +26,14 @@ fitbit_table_load <- function() {
   #sleep_data_frame
   #food_data_frame
   
+  ## Remove previous monthly files, consolidated into 1 file for each table
+  activities_junk_files <- dir(pattern="activities_.*.csv")
+  body_junk_files <- dir(pattern="body_.*.csv")
+  file.remove(activities_junk_files, body_junk_files)
+  
   ## Write each type out to file
   write.csv(activities_data_frame, file = "all_fitbit_activities.csv", row.names = FALSE)
   write.csv(body_data_frame, file = "all_fitbit_body.csv", row.names = FALSE)
-  #sleep_data_frame
-  #food_data_frame
+  #sleep_data_frame <- 
+  #food_data_frame <- 
 }
