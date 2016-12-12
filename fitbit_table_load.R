@@ -20,6 +20,13 @@ fitbit_table_load <- function() {
     }
   }
   
+  ## Adding a new column with day of the week
+  activities_data_frame[, "Week.Day"] <- NA
+  body_data_frame[, "Week.Day"] <- NA
+  
+  activities_data_frame$Week.Day <- weekdays(as.Date(activities_data_frame$Date))
+  body_data_frame$Week.Day <- weekdays(as.Date(body_data_frame$Date))
+  
   ## Order by date - should be in order already, but in case the files were read in a different order
   activities_data_frame <- activities_data_frame[order(activities_data_frame$Date),]
   body_data_frame <- body_data_frame[order(body_data_frame$Date),]
