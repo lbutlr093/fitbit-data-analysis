@@ -3,8 +3,8 @@ import os
 import fnmatch
 
 ## collect each .csv file from directory
-rawFilesDir = './fitbit-data-raw/'
-processedFilesDir = './fitbit-data-processed/'
+rawFilesDir = './fitbit_data_raw/'
+processedFilesDir = './fitbit_data_processed/'
 inputFiles = fnmatch.filter(os.listdir(rawFilesDir), '*.csv')
 
 ## open and read each .csv file
