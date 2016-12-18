@@ -4,10 +4,19 @@ data_visuals <- function() {
   ## the data into logical groups to determine the impact of
   ## different factors on my workout and general activity.
   
+  library(ggplot2)
+  
   ## TODO: hard-coded for now, will play with passing parameters later
   setwd("/home/logan/Documents/code/fitbit-data-analysis/fitbit_data_processed")
   
-  measurement_file <- read.csv("all_measurements.csv")
-  activity_file <- read.csv("all_activities.csv")
+  activities_data_frame <- read.csv("all_activities.csv")
+  measurements_data_frame <- read.csv("all_measurements.csv")
   
+  # Starting simple with histograms
+  hist(activities_data_frame$Distance[!activities_data_frame$Distance==0])
+  hist(activities_data_frame$Steps[!activities_data_frame$Steps==0])
+  
+  ggplot(activities_data_frame[which(activities_data_frame$Distance>0),], aes(x = Distance)) + geom_histogram()
+  #need to convert this column to numeric
+  #ggplot(activities_data_frame[which(activities_data_frame$Steps>0),], aes(x = Steps)) + geom_histogram()
 }
