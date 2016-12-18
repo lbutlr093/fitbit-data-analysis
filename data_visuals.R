@@ -12,11 +12,10 @@ data_visuals <- function() {
   activities_data_frame <- read.csv("all_activities.csv")
   measurements_data_frame <- read.csv("all_measurements.csv")
   
-  # Starting simple with histograms
-  hist(activities_data_frame$Distance[!activities_data_frame$Distance==0])
-  hist(activities_data_frame$Steps[!activities_data_frame$Steps==0])
+  ## Starting simple with histograms
+  distance_hist <- ggplot(activities_data_frame[which(activities_data_frame$Distance>0),], aes(x = Distance)) + geom_histogram()
+  ggsave(filename="../data_visualization/distance_histogram.png", plot=distance_hist)
   
-  ggplot(activities_data_frame[which(activities_data_frame$Distance>0),], aes(x = Distance)) + geom_histogram()
-  #need to convert this column to numeric
+  #need to convert steps column to numeric
   #ggplot(activities_data_frame[which(activities_data_frame$Steps>0),], aes(x = Steps)) + geom_histogram()
 }
