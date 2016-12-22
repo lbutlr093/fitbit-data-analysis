@@ -42,7 +42,7 @@ data_visuals <- function() {
     theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
   ggsave(filename = "../data_visualization/distance_by_month_boxplot.png", plot = distance_montly_boxplot)
   
-  ## Future Steps graphs
+  ## Future steps graph(s)
   #steps_hist <- ggplot(activities_data_frame[which(activities_data_frame$Steps>0),], aes(x - Steps)) + geom_histogram()
   #ggsave(filename="../data_visualization/steps_histogram.png", plot=steps_hist)
   
