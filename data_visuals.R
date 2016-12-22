@@ -19,15 +19,16 @@ data_visuals <- function() {
   ## Mean / Median without zero values
   distance_median <- median(activities_data_frame$Distance[activities_data_frame$Distance > 0])
   distance_mean <- mean(activities_data_frame$Distance[activities_data_frame$Distance > 0])
+  distance_max <- max(activities_data_frame$Distance)
   
   ## Simple histogram with line indicating where the median is
   distance_hist <- ggplot(activities_data_frame[which(activities_data_frame$Distance>0),], aes(x = Distance)) +
-    geom_histogram() +
-    ggtitle("Daily Distance with Median") +
+    geom_histogram(breaks = seq(0, round(distance_max,0)+1, by = 0.5), col = "#993333", fill = "#666666") +
+    ggtitle("Daily Distance") +
     labs(x = "Distance (miles)", y = "Days") +
     theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=12)) +
-    theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14, hjust=0.5)) +
-    geom_vline(xintercept = distance_median, color="blue")
+    theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14, hjust=0.5)) #+
+    #geom_vline(xintercept = distance_median, color="#00FF00") # Median line
   ggsave(filename = "../data_visualization/distance_histogram.png", plot = distance_hist)
   
   ## Boxplot of distance (in miles) per month
