@@ -32,7 +32,8 @@ data_visuals <- function() {
   ggsave(filename = "../data_visualization/distance_histogram.png", plot = distance_hist)
   
   ## Boxplot of distance (in miles) per month
-  distance_montly_boxplot <- ggplot(aes(y = Distance, x = factor(months(Date), levels = month.name)), data = activities_data_frame[which(activities_data_frame$Distance>0),]) + 
+  distance_montly_boxplot <- ggplot(aes(y = Distance, x = factor(months(Date), levels = month.name)), 
+                                    data = activities_data_frame[which(activities_data_frame$Distance>0),]) + 
     geom_boxplot() +
     ggtitle("Monthly Distance") +
     labs(x = "Month", y = "Distance (miles)") +
@@ -41,6 +42,18 @@ data_visuals <- function() {
     theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
     theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
   ggsave(filename = "../data_visualization/distance_by_month_boxplot.png", plot = distance_montly_boxplot)
+  
+  ##
+  distance_weekday_boxplot <-ggplot(aes(y = Distance, x = factor(Week.Day, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))), 
+                                    data = activities_data_frame[which(activities_data_frame$Distance>0),]) +
+    geom_boxplot() +
+    ggtitle("Daily Distance") +
+    labs(x = "Day of the Week", y = "Distance (miles)") +
+    theme(axis.text.x = element_text(face="bold", color="#993333", size=12, angle=60, hjust=1),
+          axis.text.y = element_text(face="bold", color="#993333", size=12)) +
+    theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
+    theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
+  ggsave(filename = "../data_visualization/distance_weekday_boxplot.png", plot = distance_weekday_boxplot)
   
   ## Future steps graph(s)
   #steps_hist <- ggplot(activities_data_frame[which(activities_data_frame$Steps>0),], aes(x - Steps)) + geom_histogram()
