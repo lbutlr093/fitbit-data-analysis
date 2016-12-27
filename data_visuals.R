@@ -30,7 +30,6 @@ data_visuals <- function() {
     labs(x = "Distance (miles)", y = "Days") +
     theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=12)) +
     theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14, hjust=0.5))
-  distance_hist
   ggsave(filename = "../data_visualization/distance_histogram.png", plot = distance_hist)
   
   ## Boxplot of distance per month
@@ -45,7 +44,7 @@ data_visuals <- function() {
     theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
   ggsave(filename = "../data_visualization/distance_by_month_boxplot.png", plot = distance_montly_boxplot)
   
-  ## Boxplof of distance by weekday
+  ## Boxplot of distance by weekday
   distance_weekday_boxplot <-ggplot(aes(y = Distance, x = factor(Week.Day, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))), 
                                     data = activities_data_frame[which(activities_data_frame$Distance>0),]) +
     geom_boxplot() +
@@ -57,8 +56,19 @@ data_visuals <- function() {
     theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
   ggsave(filename = "../data_visualization/distance_weekday_boxplot.png", plot = distance_weekday_boxplot)
   
+  ## Boxplot of active minutes by weekday
+  active_minutes_weekday_boxplot <-ggplot(aes(y = Minutes.Very.Active, x = factor(Week.Day, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))), 
+                                    data = activities_data_frame[which(activities_data_frame$Minutes.Very.Active>0),]) +
+    geom_boxplot() +
+    ggtitle("Daily Active Minutes") +
+    labs(x = "Day of the Week", y = "Active Minutes") +
+    theme(axis.text.x = element_text(face="bold", color="#993333", size=12, angle=60, hjust=1),
+          axis.text.y = element_text(face="bold", color="#993333", size=12)) +
+    theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
+    theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
+  active_minutes_weekday_boxplot
+  
   ## Future steps graph(s)
   #steps_hist <- ggplot(activities_data_frame[which(activities_data_frame$Steps>0),], aes(x - Steps)) + geom_histogram()
   #ggsave(filename="../data_visualization/steps_histogram.png", plot=steps_hist)
-  
 }
