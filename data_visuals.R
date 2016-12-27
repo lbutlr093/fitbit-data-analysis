@@ -21,7 +21,7 @@ data_visuals <- function() {
   distance_mean <- mean(activities_data_frame$Distance[activities_data_frame$Distance > 0])
   distance_max <- max(activities_data_frame$Distance)
   
-  ## Simple histogram with line indicating where the median is
+  ## Simple distance histogram with median line
   distance_hist <- ggplot(activities_data_frame[which(activities_data_frame$Distance>0),], aes(x = Distance)) +
     geom_histogram(breaks = seq(0, round(distance_max,0)+1, by = 0.5), col = "#993333", fill = "#666666") +
     ggtitle("Daily Distance") +
@@ -31,7 +31,7 @@ data_visuals <- function() {
     #geom_vline(xintercept = distance_median, color="#00FF00") # Median line
   ggsave(filename = "../data_visualization/distance_histogram.png", plot = distance_hist)
   
-  ## Boxplot of distance (in miles) per month
+  ## Boxplot of distance per month
   distance_montly_boxplot <- ggplot(aes(y = Distance, x = factor(months(Date), levels = month.name)), 
                                     data = activities_data_frame[which(activities_data_frame$Distance>0),]) + 
     geom_boxplot() +
@@ -43,7 +43,7 @@ data_visuals <- function() {
     theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
   ggsave(filename = "../data_visualization/distance_by_month_boxplot.png", plot = distance_montly_boxplot)
   
-  ##
+  ## Boxplof of distance by weekday
   distance_weekday_boxplot <-ggplot(aes(y = Distance, x = factor(Week.Day, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))), 
                                     data = activities_data_frame[which(activities_data_frame$Distance>0),]) +
     geom_boxplot() +
