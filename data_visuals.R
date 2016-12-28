@@ -8,7 +8,7 @@ data_visuals <- function() {
   library(lubridate)
   
   ## TODO: hard-coded for now, will play with passing parameters later
-  setwd("/home/logan/Documents/code/fitbit-data-analysis/fitbit_data_processed")
+  setwd("~/Documents/code/fitbit-data-analysis/fitbit_data_cleaned")
   
   activities_data_frame <- read.csv("all_activities.csv")
   measurements_data_frame <- read.csv("all_measurements.csv")
@@ -66,9 +66,11 @@ data_visuals <- function() {
           axis.text.y = element_text(face="bold", color="#993333", size=12)) +
     theme(axis.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=14)) +
     theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
-  active_minutes_weekday_boxplot
+  ggsave(filename = "../data_visualization/active_minutes_weekday_boxplot.png", plot = active_minutes_weekday_boxplot)
   
   ## Future steps graph(s)
   #steps_hist <- ggplot(activities_data_frame[which(activities_data_frame$Steps>0),], aes(x - Steps)) + geom_histogram()
   #ggsave(filename="../data_visualization/steps_histogram.png", plot=steps_hist)
 }
+
+data_visuals()

@@ -46,3 +46,5 @@ data_cleanse <- function() {
   # sleep_data_frame <- 
   # food_data_frame <- 
 }
+
+data_cleanse()
