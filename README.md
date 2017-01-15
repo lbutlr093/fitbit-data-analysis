@@ -1,6 +1,8 @@
 # fitbit-data-analysis
 Project to analyze data collected from my fitbit devices over the last few years. The data includes weight, heart rate, workouts, and general daily activity
 
+## visualizations are located in the data_visualization folder
+
 ## Steps
 1. Downloaded data from the "data export" section of fitbit.com (I only use the categories "activities" and "body")
 2. Run the start.sh script to clean, prepare, and create visualizations
