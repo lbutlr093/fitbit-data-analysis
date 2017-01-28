@@ -23,6 +23,9 @@ Project to analyze data collected from my fitbit devices over the last few years
 
 
 ## TODO
+-Day-ending step count (eg. _000 vs _200, _500, _800, ...)
+-Jan 2016 vs Jan 2017 (minus workout steps)
+
 -Getting daily average temp
 -Change the 'with open' section of python code: see stack overflow link
 
