@@ -57,7 +57,7 @@ data_visuals <- function() {
   ggsave(filename = "../data_visualization/distance_weekday_boxplot.png", plot = distance_weekday_boxplot)
   
   ## Boxplot of active minutes by weekday
-  active_minutes_weekday_boxplot <-ggplot(aes(y = Minutes.Very.Active, x = factor(Week.Day, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))), 
+  active_minutes_weekday_boxplot <- ggplot(aes(y = Minutes.Very.Active, x = factor(Week.Day, levels = c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"))), 
                                     data = activities_data_frame[which(activities_data_frame$Minutes.Very.Active>0),]) +
     geom_boxplot() +
     ggtitle("Daily Active Minutes") +
@@ -68,6 +68,23 @@ data_visuals <- function() {
     theme(plot.title = element_text(family = "Trebuchet MS", color="#666666", face="bold", size=16, hjust=0.5))
   ggsave(filename = "../data_visualization/active_minutes_weekday_boxplot.png", plot = active_minutes_weekday_boxplot)
   
+  ## Day-ending steps jitter plot
+  steps <- activities_data_frame$Steps
+  for (index in seq_along(steps)) {
+    steps[index] <- steps[index] %% 1000      # Remove the thousands place from steps
+  }
+  
+  steps_in_hundreds <- ggplot(activities_data_frame, aes(x = activities_data_frame$Steps %% 1000)) +
+    geom_density(fill = "turquoise1", alpha = 0.4) +
+    ggtitle("Steps (in hundreds)") +
+    xlab("Steps (in hundreds)") + 
+    theme(plot.title = element_text(family = "Times", face = "bold", size = 16, hjust = 0.5)) +
+    theme(axis.title = element_text(family = "Times", face = "bold", size = 12))
+  ggsave(filename = "../data_visualization/steps_in_hundreds.png", plot = steps_in_hundreds)
+  
+
+  ## TODO - distance/step by calendar year, controlling for number of days used in each year (2014 / 2017 not full years)
+    
   ## Future steps graph(s)
   #steps_hist <- ggplot(activities_data_frame[which(activities_data_frame$Steps>0),], aes(x - Steps)) + geom_histogram()
   #ggsave(filename="../data_visualization/steps_histogram.png", plot=steps_hist)
