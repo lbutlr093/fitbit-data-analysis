@@ -23,8 +23,10 @@ Project to analyze data collected from my fitbit devices over the last few years
 
 
 ## TODO
++Jan 2016 vs Jan 2017 (minus workout steps)
 -Day-ending step count (eg. _000 vs _200, _500, _800, ...)
--Jan 2016 vs Jan 2017 (minus workout steps)
+-Client 1 vs Client 2 (related to the jan v jan analysis)
+-Yearly comparison (total steps) - combine with the monthly boxplot chart
 
 -Getting daily average temp
 -Change the 'with open' section of python code: see stack overflow link
