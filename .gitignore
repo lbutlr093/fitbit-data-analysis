@@ -1,2 +1,3 @@
 /fitbit_data_processed/*
 /fitbit_data_cleaned/*
+.DS_Store
