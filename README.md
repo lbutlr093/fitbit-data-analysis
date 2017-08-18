@@ -10,7 +10,7 @@ Project to analyze data collected from my fitbit devices over the last few years
 ## Future work
 1. Once fitbit enables exporting of exercise data, download it and create graphs based on it.
 
-### Dashboard
+## Tableau Dashboard
 
 ![alt text](Fitbit_Data_Analysis.png)
 
