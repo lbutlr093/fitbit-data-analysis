@@ -1,5 +1,5 @@
 # fitbit-data-analysis
-Project to analyze data collected from my fitbit devices over the last few years. The data includes weight, heart rate, workouts, and general daily activity
+Project to analyze data collected from my fitbit devices over the last few years. The data includes weight, heart rate, workouts (not available via fitbit yet), and general daily activity
 
 ## visualizations are located in the data_visualization folder
 
@@ -10,40 +10,15 @@ Project to analyze data collected from my fitbit devices over the last few years
 ## Future work
 1. Once fitbit enables exporting of exercise data, download it and create graphs based on it.
 
+### Dashboard
 
-## Life cycle of project
-
-| Step             | Current phase                           | Future state                                              |
-| :----------------|:----------------------------------------|:----------------------------------------------------------|
-| Data Acquisition | manually downloaded from fitbit         | Curl/PHP or another method to automate obtaining data     |
-| Preparation      | Python script to split by section       |                                                           |
-| Cleaning	   | data_cleanse.R to clean                 |                                                           |
-| Visualization    | data_visuals.R		             | visuals to prepare listed below                           |
-| Conclusions      |                                         |                                                           |
+![alt text](Fitbit_Data_Analysis.png)
 
 
 ## TODO
-+Jan 2016 vs Jan 2017 (minus workout steps)
--Day-ending step count (eg. _000 vs _200, _500, _800, ...)
 -Client 1 vs Client 2 (related to the jan v jan analysis)
--Yearly comparison (total steps) - combine with the monthly boxplot chart
-
 -Getting daily average temp
--Change the 'with open' section of python code: see stack overflow link
-
--Include some way to get the data from fitbit
--Write script to run (all) python and R scripts
-
--R script fixes
-	-If there are no files in the directory, or minimal files, the all_fitbit_xyz.csv file will be overwritten with only the current data - all previous data will be erased. Create a shell script ASAP to avoid!
-	-Do something about the 5 warning messages that appear: 
-		In `[<-.factor`(`*tmp*`, ri, value = c(0L, 70L, 251L, 201L, 195L,  :	invalid factor level, NA generated
-
-
 Analysis/Graphical representation:
-	-Skittles post for inspiration
-	+graph by day of the week
-	+steps by DOW
 	-exercise time by DOW
 	-exercise calories/hour by DOW
 	-frequently skipped exercise day of the week
